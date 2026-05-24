@@ -252,7 +252,7 @@ function SectionHeader({ eyebrow, title, children }) {
 
 function Card({ children, className = "" }) {
   return (
-    <div className={`rounded-[2rem] border border-amber-600/20 bg-gradient-to-br from-stone-800/60 to-stone-850/50 shadow-lg shadow-amber-900/15 backdrop-blur-sm ${className}`}>
+    <div className={`rounded-[2rem] border border-amber-600/20 bg-gradient-to-br from-stone-700/60 to-stone-750/50 shadow-lg shadow-amber-900/15 backdrop-blur-sm ${className}`}>
       {children}
     </div>
   );
@@ -307,7 +307,7 @@ function SkillCloud() {
                   whileHover={{ y: -6, scale: 1.05 }}
                   className="flex flex-col items-center gap-3"
                 >
-                  <div className="rounded-2xl border border-amber-600/40 bg-gradient-to-br from-stone-700/70 to-stone-800/60 p-5 text-amber-400 shadow-lg shadow-amber-900/20 transition hover:border-amber-500/60 hover:from-stone-700/90 hover:to-stone-800/80 hover:shadow-amber-900/30">
+                  <div className="rounded-2xl border border-amber-600/40 bg-gradient-to-br from-stone-600/70 to-stone-700/60 p-5 text-amber-400 shadow-lg shadow-amber-900/20 transition hover:border-amber-500/60 hover:from-stone-600/90 hover:to-stone-700/80 hover:shadow-amber-900/30">
                     <IconComponent className="h-8 w-8" />
                   </div>
                   <div className="text-center">
@@ -325,14 +325,14 @@ function SkillCloud() {
 
 function App() {
   return (
-    <main className="min-h-screen scroll-smooth bg-gradient-to-br from-stone-800 via-stone-850 to-stone-900 text-stone-100 selection:bg-amber-600 selection:text-stone-900">
+    <main className="min-h-screen scroll-smooth bg-gradient-to-br from-stone-700 via-stone-750 to-stone-800 text-stone-100 selection:bg-amber-600 selection:text-stone-900">
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-1/2 top-[-220px] h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-amber-700/25 blur-3xl" />
-        <div className="absolute bottom-[-280px] right-[-180px] h-[620px] w-[620px] rounded-full bg-amber-800/20 blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:52px_52px]" />
+        <div className="absolute left-1/2 top-[-220px] h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-amber-700/30 blur-3xl" />
+        <div className="absolute bottom-[-280px] right-[-180px] h-[620px] w-[620px] rounded-full bg-amber-800/25 blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:52px_52px]" />
       </div>
 
-      <header className="sticky top-0 z-50 border-b border-amber-600/15 bg-gradient-to-b from-stone-800/95 to-stone-850/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-amber-600/15 bg-gradient-to-b from-stone-700/95 to-stone-750/90 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <a href="#top" className="text-lg font-black tracking-tight text-white">
             Jojinio Moraldo
@@ -407,7 +407,7 @@ function App() {
           transition={{ duration: 0.8, delay: 0.1 }}
         >
           <Card className="p-5">
-            <div className="rounded-[1.5rem] border border-amber-600/25 bg-gradient-to-br from-stone-700/60 to-stone-800/50 p-6">
+            <div className="rounded-[1.5rem] border border-amber-600/25 bg-gradient-to-br from-stone-600/60 to-stone-700/50 p-6">
               <div className="mb-7 flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-500">Data Analyst</p>
@@ -436,7 +436,7 @@ function App() {
         </motion.div>
       </section>
 
-      <section className="border-y border-amber-600/10 bg-gradient-to-r from-stone-800/50 to-stone-850/50 py-10">
+      <section className="border-y border-amber-600/10 bg-gradient-to-r from-stone-700/50 to-stone-750/50 py-10">
         <div className="mx-auto grid max-w-7xl gap-4 px-6 md:grid-cols-4">
           {[
             ["4+", "Featured project areas"],
@@ -444,7 +444,7 @@ function App() {
             ["2", "Live apps"],
             ["2026", "Current focus"],
           ].map(([number, label]) => (
-            <div key={label} className="rounded-3xl border border-amber-600/20 bg-gradient-to-br from-stone-800/70 to-stone-850/60 p-6 text-center shadow-md shadow-amber-900/10">
+            <div key={label} className="rounded-3xl border border-amber-600/20 bg-gradient-to-br from-stone-700/70 to-stone-750/60 p-6 text-center shadow-md shadow-amber-900/10">
               <p className="text-3xl font-black bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">{number}</p>
               <p className="mt-2 text-sm leading-6 text-stone-300">{label}</p>
             </div>
@@ -528,7 +528,7 @@ function App() {
               >
                 <Card className="overflow-hidden transition hover:border-amber-500/40 hover:shadow-lg hover:shadow-amber-900/25">
                   <div className="grid gap-0 lg:grid-cols-[0.82fr_1.18fr]">
-                    <div className="border-b border-amber-600/15 bg-gradient-to-br from-stone-800/50 to-stone-850/40 p-7 lg:border-b-0 lg:border-r">
+                    <div className="border-b border-amber-600/15 bg-gradient-to-br from-stone-700/50 to-stone-750/40 p-7 lg:border-b-0 lg:border-r">
                       <p className="text-xs font-bold uppercase tracking-[0.32em] text-amber-500">Project {String(index + 1).padStart(2, "0")}</p>
                       <h3 className="mt-4 text-3xl font-black text-white md:text-4xl">{project.title}</h3>
                       <p className="mt-3 text-sm font-semibold text-stone-400">{project.type}</p>
@@ -646,7 +646,7 @@ function App() {
               <h3 className="text-2xl font-black text-white">Education</h3>
               <div className="mt-6 space-y-5">
                 {education.map((item) => (
-                  <div key={item.school} className="rounded-2xl border border-amber-600/20 bg-gradient-to-br from-stone-800/60 to-stone-850/50 p-5 shadow-md shadow-amber-900/10">
+                  <div key={item.school} className="rounded-2xl border border-amber-600/20 bg-gradient-to-br from-stone-700/60 to-stone-750/50 p-5 shadow-md shadow-amber-900/10">
                     <p className="font-black text-white">{item.school}</p>
                     <p className="mt-1 text-sm font-semibold text-amber-400">{item.meta}</p>
                     <p className="mt-3 leading-7 text-stone-300">{item.detail}</p>
@@ -660,7 +660,7 @@ function App() {
               <h3 className="text-2xl font-black text-white">Certifications</h3>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {certifications.map((cert) => (
-                  <div key={cert} className="rounded-2xl border border-amber-600/20 bg-gradient-to-br from-stone-800/60 to-stone-850/50 p-4 text-sm font-medium leading-6 text-stone-300 shadow-md shadow-amber-900/10">
+                  <div key={cert} className="rounded-2xl border border-amber-600/20 bg-gradient-to-br from-stone-700/60 to-stone-750/50 p-4 text-sm font-medium leading-6 text-stone-300 shadow-md shadow-amber-900/10">
                     {cert}
                   </div>
                 ))}
