@@ -195,15 +195,15 @@ const experience = [
 const education = [
   {
     school: "The University of the West Indies — St. Augustine",
-    meta: "Bachelor of Science student",
+    meta: "Bachelor of Science (Double Major)",
     detail:
-      "Completed major in Computer Science with ongoing Electronics studies. Developed a foundation in programming, systems thinking, databases, web applications, technical problem-solving, and collaborative software projects.",
+      "Computer Science major completed with expertise in programming, systems architecture, databases, and web application development. Electronics major in progress, specializing in telecommunications systems engineering, network infrastructure design, and system maintenance protocols. Combined academic foundation supports both software intelligence and hardware-network integration.",
   },
   {
     school: "Hillview College",
     meta: "2015 — 2022",
     detail:
-      "Completed secondary education and built the academic foundation that led into university-level technical studies.",
+      "Completed secondary education with strong foundation in mathematics and technical sciences, establishing the academic groundwork for advanced university-level engineering and computer science studies.",
   },
 ];
 
@@ -259,46 +259,67 @@ function Card({ children, className = "" }) {
 }
 
 function SkillCloud() {
-  const [hoveredSkill, setHoveredSkill] = React.useState(null);
+  // Group skills by category
+  const skillsByCategory = skillsWithIcons.reduce((acc, skill) => {
+    if (!acc[skill.category]) {
+      acc[skill.category] = [];
+    }
+    acc[skill.category].push(skill);
+    return acc;
+  }, {});
+
+  const categoryOrder = ["Analytics", "Data Engineering", "Databases", "Development", "Tools", "Workflow", "Collaboration"];
+  const orderedCategories = categoryOrder.filter(cat => skillsByCategory[cat]);
 
   return (
-    <motion.div
-      variants={stagger}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      className="flex flex-wrap justify-center gap-6"
-    >
-      {skillsWithIcons.map((skill, index) => {
-        const IconComponent = skill.icon;
-        return (
+    <div className="space-y-10">
+      {orderedCategories.map((category) => (
+        <motion.div
+          key={category}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          transition={{ duration: 0.55 }}
+        >
+          <div className="mb-6 flex items-center gap-3 border-b border-amber-600/20 pb-3">
+            <div className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+            <h3 className="text-sm font-bold uppercase tracking-[0.25em] text-amber-400">
+              {category}
+            </h3>
+            <div className="flex-grow border-b border-amber-600/10" />
+          </div>
+          
           <motion.div
-            key={skill.name}
-            variants={fadeUp}
-            transition={{ duration: 0.45 }}
-            onMouseEnter={() => setHoveredSkill(skill.name)}
-            onMouseLeave={() => setHoveredSkill(null)}
-            whileHover={{ y: -8, scale: 1.1 }}
-            animate={{ y: [0, index % 2 === 0 ? -5 : 5, 0] }}
-            className="relative flex flex-col items-center"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="flex flex-wrap justify-start gap-4"
           >
-            <div className="rounded-2xl border border-amber-600/40 bg-gradient-to-br from-stone-700/70 to-stone-800/60 p-5 text-amber-400 shadow-lg shadow-amber-900/20 transition hover:border-amber-500/60 hover:from-stone-700/90 hover:to-stone-800/80 hover:shadow-amber-900/30">
-              <IconComponent className="h-8 w-8" />
-            </div>
-            {hoveredSkill === skill.name && (
-              <motion.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                className="absolute top-full mt-3 whitespace-nowrap rounded-lg bg-stone-900/98 px-4 py-2 text-xs font-bold text-amber-300 border border-amber-600/50 pointer-events-none shadow-lg shadow-black/50"
-              >
-                {skill.name}
-              </motion.div>
-            )}
+            {skillsByCategory[category].map((skill, index) => {
+              const IconComponent = skill.icon;
+              return (
+                <motion.div
+                  key={skill.name}
+                  variants={fadeUp}
+                  transition={{ duration: 0.45 }}
+                  whileHover={{ y: -6, scale: 1.05 }}
+                  className="flex flex-col items-center gap-3"
+                >
+                  <div className="rounded-2xl border border-amber-600/40 bg-gradient-to-br from-stone-700/70 to-stone-800/60 p-5 text-amber-400 shadow-lg shadow-amber-900/20 transition hover:border-amber-500/60 hover:from-stone-700/90 hover:to-stone-800/80 hover:shadow-amber-900/30">
+                    <IconComponent className="h-8 w-8" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-sm font-bold text-stone-100">{skill.name}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
-        );
-      })}
-    </motion.div>
+        </motion.div>
+      ))}
+    </div>
   );
 }
 
@@ -338,7 +359,7 @@ function App() {
       <section id="top" className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-20 pt-16 md:grid-cols-[1.12fr_0.88fr] md:pb-28 md:pt-24">
         <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.75 }}>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-600/35 bg-gradient-to-r from-amber-600/25 to-amber-700/15 px-4 py-2 text-sm font-semibold text-amber-100 shadow-md shadow-amber-900/15">
-            <Sparkles className="h-4 w-4" /> Portfolio for data analytics and business intelligence
+            <Sparkles className="h-4 w-4" /> Where complexity becomes clarity
           </div>
           <h1 className="max-w-5xl text-5xl font-black leading-[1.02] tracking-tight bg-gradient-to-r from-white via-stone-100 to-amber-100 bg-clip-text text-transparent md:text-7xl">
             Turn data into decisions.
@@ -432,9 +453,31 @@ function App() {
       </section>
 
       <section id="skills" className="mx-auto max-w-7xl px-6 py-24">
-        <SectionHeader eyebrow="Technical Foundation" title="Data Analysis Toolkit">
-          Core competencies in SQL, Python, visualization, and business intelligence—built for extracting insights from data and automating reporting workflows.
-        </SectionHeader>
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp}
+            transition={{ duration: 0.65 }}
+            className="flex flex-col items-center gap-4"
+          >
+            <div className="inline-flex items-center justify-center h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-600/25 to-amber-700/15 text-amber-400 shadow-md shadow-amber-900/15">
+              <Layers className="h-6 w-6" />
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.35em] text-amber-500">
+                Technical Foundation
+              </p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight text-white md:text-5xl">
+                Data Analysis Toolkit
+              </h2>
+              <p className="mt-5 text-base leading-8 text-stone-300">
+                Core competencies in SQL, Python, visualization, and business intelligence—built for extracting insights from data and automating reporting workflows.
+              </p>
+            </div>
+          </motion.div>
+        </div>
         <SkillCloud />
       </section>
 
